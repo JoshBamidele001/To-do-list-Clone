@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrap{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #box{
+            width: 400px;
+            height: 600px;
+            border: 1px solid black;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="box">
+            <h1>TO DO LIST</h1>
+            <input type="text" id="UserInput">
+            <input type="text" id="UserNote">
+            <button onclick="addToDo()">Add</button>
+            <div id="display"></div>
+        </div>
+    </div>
+</body>
+<script>
+
+    var todoArr = []
+
+        function addToDo(){
+            let item = document.getElementById("UserInput").value;
+            let item2 = document.getElementById("UserNote").value;
+            let todoObj = {
+                item : item,
+                item2 : item2,
+                date : new Date().toUTCString()
+            };
+            todoArr.push(todoObj);
+
+            displaytoDO();
+        }
+
+        function displaytoDO(){
+            content = ""
+            for (let i = 0; i<todoArr.length; i++){
+                content += '<p>' + todoArr[i].item + todoArr[i].item2  + '</p>'
+            }
+            document.getElementById("display").innerHTML = content
+            
+        }
+</script>
+</html>
